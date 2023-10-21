@@ -131,14 +131,27 @@ public class Weapon : MonoBehaviour {
                 p = MakeProjectile(); // Make left Projectile
                 p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(20, Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(-20, Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
                 break;
+
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.rigid.velocity = 20*vel;
+                
+                break;
+
         }
     }
 
     public Projectile MakeProjectile()
     {
         GameObject go = Instantiate<GameObject>(def.projectilePrefab);
-        if(transform.parent.gameObject.tag == "Hero")
+        if (transform.parent.gameObject.tag == "Hero")
         {
             go.tag = "ProjectileHero";
             go.layer = LayerMask.NameToLayer("ProjectileHero");
