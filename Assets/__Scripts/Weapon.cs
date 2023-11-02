@@ -139,10 +139,9 @@ public class Weapon : MonoBehaviour {
                 p.rigid.velocity = p.transform.rotation * vel;
                 break;
 
-            case WeaponType.missile:
+            case WeaponType.laser:
                 p = MakeProjectile();
-                p.rigid.velocity = 20*vel;
-                
+                p.rigid.velocity = 2*vel;
                 break;
 
         }
